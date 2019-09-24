@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//以下2行の記述を忘れずに
+// Controller.php の使用
 use App\Http\Controllers\Controller;
+// 作成した「フォームリクエスト」の使用
+use App\Http\Requests\BookRequest;
+// 作成したBookモデルの使用
 use App\Book;
 
 
@@ -25,12 +28,15 @@ class BookController extends Controller
     // DBよりURIパラメータと同じIDを持つBookの情報を取得
     $book = Book::findOrFail($id);
 
+    // tinkerによるデバッグ
+    /* eval(\Psy\sh()); */
+
     // 取得した値をビュー「book/edit」に渡す
     return view('book/edit', compact('book'));
   }
 
   // $requestにはクライアントからのリクエスト情報が入っている
-  public function update(Request $request, $id)
+  public function update(BookRequest $request, $id)
   {
     $book = Book::findOrFail($id);
     $book->name = $request->name;
@@ -41,7 +47,7 @@ class BookController extends Controller
     return redirect("/book");
   }
 
-  public function destory($id) {
+  public function destroy($id) {
     $book = Book::findOrFail($id);
     $book->delete();
 
@@ -55,7 +61,7 @@ class BookController extends Controller
     return view('book/create', compact('book'));
   }
 
-  public function store(Request $request)
+  public function store(BookRequest $request)
   {
     $book = new Book();
     $book->name = $request->name;

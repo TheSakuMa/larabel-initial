@@ -6,6 +6,9 @@
   </div>
   <div class="row">
     <div class="col-md-8 col-md-offset-1">
+      <!-- エラーメッセージの表示 -->
+      @include('book/message')
+
       @if($target == 'store')
       <form action="/book" method="post">
       @elseif($target == 'update')
