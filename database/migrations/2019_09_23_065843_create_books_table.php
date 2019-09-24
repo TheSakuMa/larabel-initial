@@ -1,5 +1,9 @@
 <?php
 
+// マイグレーションとはデータベースのバージョンコントロールのような機能である
+// アプリケーションデータベースのスキーマの更新をチームで簡単に共有できるようにしてくれる
+// ※ スキーマとは、データベースにおいては、データベースの構造を指し、DBMSでサポートされている形式言語で記述される
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
