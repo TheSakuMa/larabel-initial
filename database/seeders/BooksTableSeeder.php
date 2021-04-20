@@ -3,6 +3,8 @@
 // シーダ（初期値設定）クラスを使用し、テストデータをデータベースに設定する
 // 全シーダクラスは database/seeds に保存する
 
+namespace Database\Seeder;
+
 use Illuminate\Database\Seeder;
 
 class BooksTableSeeder extends Seeder
